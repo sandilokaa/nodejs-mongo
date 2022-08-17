@@ -6,7 +6,7 @@ const schema = mongoose.Schema(
         content: 'String'
     },
     {
-        timeStamps: true
+        timestamps: true
     }
 );
 
