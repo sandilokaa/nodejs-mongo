@@ -1,7 +1,25 @@
 const authService = require("../services/authService");
 
-/* ------------------  Create User ------------------ */ 
+/* ------------------  Registration User ------------------ */ 
 
+const handleRegisterUser = async (req, res) => {
 
+    const { name, email, password } = req.body;
 
-/* ------------------  End Create User ------------------ */ 
+    const { status, status_code, message, data } = await authService.handleRegisterUser({ 
+        name,
+        email,
+        password
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data
+    });
+
+}
+
+/* ------------------  End Registration User ------------------ */ 
+
+module.exports = { handleRegisterUser };
