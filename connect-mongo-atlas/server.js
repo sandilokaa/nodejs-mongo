@@ -6,35 +6,38 @@ const app = express();
 app.use(express.json());
 
 
-/* ------------------ Import Model ------------------ */
+/* ================================= Import Model ================================= */
 
 const postModel = require('./helper/postModel');
 
-/* ------------------ End Import Model ------------------ */
+/* ================================= End Import Model ================================= */
 
 
-/* ------------------ Import Controllers ------------------ */
+/* ================================= Import Controllers ================================= */
 
 const postsController = require("./controllers/postsController");
 const authController = require("./controllers/authController");
 
-/* ------------------ End Import Controllers ------------------ */
+/* ================================= End Import Controllers ================================= */
 
 
-/* ------------------ Define API ------------------ */
+/* ================================= Define API ================================= */
 
-/* ------------------------------------ USER ------------------------------------ */
+
+/* ------------------------- USER ------------------------- */
+
 
 /* ------------------ Create User ------------------ */
 
-
+app.post('/v1/registration', authController.handleRegisterUser);
 
 /* ------------------ End Create User ------------------ */
 
-/* ------------------------------------ END USER ------------------------------------ */
+
+/* ------------------------- END USER ------------------------- */
 
 
-/* ------------------------------------ POST ------------------------------------ */
+/* ------------------------- POST ------------------------- */
 
 /* ------------------ Create Post ------------------ */
 
@@ -56,23 +59,12 @@ app.get('/v1/posts/:id', postsController.handleGetPostsById);
 
 /* ------------------ End Get Post By Id ------------------ */
 
-// /* ------------------ Get Post By Id ------------------ */
 
-// app.get("/v1/posts/:id", async(req, res) => {
-    
-//     const { id } = req.params;
-    
-//     try{
+/* ------------------ Update Post By Id ------------------ */
 
-//         const getPostById = await postModel.findById(id);
-//         res.json(getPostById);
+// app.put('/v1/posts/update/:id', postsController.handleUpdatePostById);
 
-//     } catch (err) {
-//         res.status(500).send(err);
-//     }
-// });
-
-// /* ------------------ End Get Post By Id ------------------ */
+/* ------------------ End Update Post By Id ------------------ */
 
 
 // /* ------------------ Update Post By Id ------------------ */
