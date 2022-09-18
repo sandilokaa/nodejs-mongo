@@ -29,7 +29,7 @@ const authController = require("./controllers/authController");
 
 /* ------------------ Create User ------------------ */
 
-app.post('/v1/registration', authController.handleRegisterUser);
+app.post('/v1/register', authController.handleRegisterUser);
 
 /* ------------------ End Create User ------------------ */
 
