@@ -3,7 +3,7 @@ const postsService = require("../services/postsService");
 
 /* ------------------  Create Post ------------------ */
 
-const handleCreatePost = async (req, res) => {
+const handleCreatePost = async(req, res) => {
 
     const { title, content }= req.body;
 
@@ -25,7 +25,7 @@ const handleCreatePost = async (req, res) => {
 
 /* ------------------ Get Post ------------------ */
 
-const handleGetPosts = async (req, res) => {
+const handleGetPosts = async(req, res) => {
 
     const { status, status_code, message, data } = await postsService.handleGetPosts();
 
@@ -41,7 +41,7 @@ const handleGetPosts = async (req, res) => {
 
 /* ------------------ Get Post By Id ------------------ */
 
-const handleGetPostsById = async (req, res) => {
+const handleGetPostsById = async(req, res) => {
 
     const { id } = req.params;
 
@@ -56,4 +56,33 @@ const handleGetPostsById = async (req, res) => {
 
 /* ------------------ End Get Post By Id ------------------ */
 
-module.exports = { handleCreatePost, handleGetPosts, handleGetPostsById };
+
+/* ------------------ Update Post By Id ------------------ */
+
+const handleUpdatePostById = async(req, res) => {
+
+    const { id } = req.params;
+
+    const { title, content } = req.body;
+
+    const { status, status_code, message, data } = await postsService.handleUpdatePostById({ 
+        id,
+        title,
+        content
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data
+    });
+}
+
+/* ------------------ End Update Post By Id ------------------ */
+
+module.exports = { 
+    handleCreatePost, 
+    handleGetPosts, 
+    handleGetPostsById, 
+    handleUpdatePostById 
+};

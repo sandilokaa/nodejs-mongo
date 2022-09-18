@@ -90,6 +90,49 @@ class postsService {
     
     /* ------------------ End Get Post By Id ------------------ */
 
+
+    /* ------------------ Update Post By Id ------------------ */
+
+    static async handleUpdatePostById({ 
+        id,
+        title,
+        content 
+    }){
+
+        /* ------------------ Payload Validation ------------------ */
+
+        if (!title){
+            return{
+                status: false,
+                status_code: 400,
+                message: "Title must be filled!",
+                data: {
+                    handleCreatePost: null
+                }
+            }
+        }
+
+        if (!content){
+            return{
+                status: false,
+                status_code: 400,
+                message: "Content must be filled!",
+                data: {
+                    handleCreatePost: null
+                }
+            }
+        }
+
+        /* ------------------ End Payload Validation ------------------ */
+
+        const getPost = await postsRepository.getPostById({ id });
+
+        console.log(getPost);
+    
+    }
+
+    /* ------------------ End Update Post By Id ------------------ */
+
 };
 
 module.exports = postsService;
