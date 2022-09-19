@@ -26,12 +26,8 @@ const authController = require("./controllers/authController");
 
 /* ------------------------- USER ------------------------- */
 
-
-/* ------------------ Create User ------------------ */
-
 app.post('/v1/register', authController.handleRegisterUser);
-
-/* ------------------ End Create User ------------------ */
+app.post('/v1/login', authController.handleLoginUser);
 
 
 /* ------------------------- END USER ------------------------- */
@@ -39,25 +35,9 @@ app.post('/v1/register', authController.handleRegisterUser);
 
 /* ------------------------- POST ------------------------- */
 
-/* ------------------ Create Post ------------------ */
-
 app.post('/v1/create', postsController.handleCreatePost);
-
-/* ------------------ End Create Post ------------------ */
-
-
-/* ------------------ Get Post ------------------ */
-
 app.get('/v1/posts', postsController.handleGetPosts);
-
-/* ------------------ End Get Post ------------------ */
-
-
-/* ------------------ Get Post By Id ------------------ */
-
 app.get('/v1/posts/:id', postsController.handleGetPostsById);
-
-/* ------------------ End Get Post By Id ------------------ */
 
 
 /* ------------------ Update Post By Id ------------------ */
