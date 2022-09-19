@@ -22,4 +22,25 @@ const handleRegisterUser = async (req, res) => {
 
 /* ------------------  End Registration User ------------------ */ 
 
-module.exports = { handleRegisterUser };
+
+/* ------------------  Login User ------------------ */ 
+
+const handleLoginUser = async (req, res) => {
+
+    const { email, password } = req.body;
+
+    const { status, status_code, message, data } = await authService.handleLoginUser({
+        email,
+        password
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data
+    });
+}
+
+/* ------------------  End Login User ------------------ */ 
+
+module.exports = { handleRegisterUser, handleLoginUser };
