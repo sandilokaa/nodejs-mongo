@@ -7,7 +7,10 @@ const handleCreatePost = async(req, res) => {
 
     const { title, content }= req.body;
 
+    const user_id = req.user.id;
+
     const { status, status_code, message, data } = await postsService.handleCreatePost({
+        user_id,
         title,
         content
     });

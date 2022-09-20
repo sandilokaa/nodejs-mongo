@@ -4,7 +4,7 @@ class postsService {
 
     /* ------------------ Create Post ------------------ */
 
-    static async handleCreatePost({ title, content }){
+    static async handleCreatePost({ user_id, title, content }){
 
         /* ------------------ Payload Validation ------------------ */
 
@@ -33,6 +33,7 @@ class postsService {
         /* ------------------ End Payload Validation ------------------ */
 
         const handleCreatePost = await postsRepository.handleCreatePost({
+            user_id,
             title,
             content
         });

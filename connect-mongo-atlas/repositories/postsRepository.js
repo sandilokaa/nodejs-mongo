@@ -4,9 +4,10 @@ class PostsRepository{
 
     /* ------------------ Create Post ------------------ */
 
-    static async handleCreatePost({ title, content }){
+    static async handleCreatePost({ user_id, title, content }){
 
         const handleCreatePost = await postModel.create({
+            user_id,
             title,
             content
         });
