@@ -6,11 +6,11 @@ const app = express();
 app.use(express.json());
 
 
-/* ================================= Import Model ================================= */
+/* ================================= Import Middlewares ================================= */
 
-const postModel = require('./helper/postModel');
+const middlewares = require("./middlewares/auth");
 
-/* ================================= End Import Model ================================= */
+/* ================================= End Import Middlewares ================================= */
 
 
 /* ================================= Import Controllers ================================= */
@@ -35,16 +35,10 @@ app.post('/v1/login', authController.handleLoginUser);
 
 /* ------------------------- POST ------------------------- */
 
-app.post('/v1/create', postsController.handleCreatePost);
 app.get('/v1/posts', postsController.handleGetPosts);
 app.get('/v1/posts/:id', postsController.handleGetPostsById);
-
-
-/* ------------------ Update Post By Id ------------------ */
-
-// app.put('/v1/posts/update/:id', postsController.handleUpdatePostById);
-
-/* ------------------ End Update Post By Id ------------------ */
+app.post('/v1/posts/create', middlewares.authenticate, postsController.handleCreatePost);
+app.put('/v1/posts/update/:id', middlewares.authenticate ,postsController.handleUpdatePostById);
 
 
 // /* ------------------ Update Post By Id ------------------ */
